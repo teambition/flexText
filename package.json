@@ -1,0 +1,21 @@
+{
+  "name": "tb.flexText",
+  "version": "0.0.1",
+  "description": "Auto-height textarea enhanced by Teambition from jQuery flexText",
+  "main": "tb.flexText.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teambition/flexText"
+  },
+  "author": "Teambition",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/teambition/flexText/issues"
+  },
+  "devDependencies": {
+    "closurecompiler": "~1.1.2"
+  }
+}

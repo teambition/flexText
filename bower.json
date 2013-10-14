@@ -1,0 +1,23 @@
+{
+  "name": "tb.flexText",
+  "version": "0.0.1",
+  "homepage": "https://github.com/teambition/flexText",
+  "authors": [
+    "Qi Junyuan <conan007ai@gmail.com>"
+  ],
+  "description": "Auto-height textarea enhanced by Teambition from jQuery flexText",
+  "main": "tb.flexText.js",
+  "keywords": [
+    "auto-height-textarea",
+    "auto-height",
+    "textarea"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
