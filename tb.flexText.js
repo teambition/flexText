@@ -20,7 +20,7 @@
       var _this = this;
 
       // Insert wrapper elem & pre/span for textarea mirroring
-      this.$textarea.wrap('<div class="flex-text-wrap" />').before('<div><span /></div>');
+      this.$textarea.wrap('<div class="flex-text-wrap" />').before('<div><span /><br></div>');
 
       this.$span = this.$textarea.prev().find('span');
 
