@@ -9,8 +9,9 @@
 ;(function ($) {
 
   // Constructor
-  function FT(elem) {
+  function FT(elem, onchangeFn) {
     this.$textarea = $(elem);
+    this.onchange = typeof onchangeFn === 'function' ? onchangeFn : function () {};
 
     this._init();
   }
@@ -20,17 +21,24 @@
       var _this = this;
 
       // Insert wrapper elem & pre/span for textarea mirroring
-      this.$textarea.wrap('<div class="flex-text-wrap" />').before('<div><span /><br></div>');
+      _this.$textarea.wrap('<div class="flex-text-wrap" />').before('<div><span /><br></div>');
 
-      this.$span = this.$textarea.prev().find('span');
+      _this.$span = _this.$textarea.prev().find('span');
+
+      _this.oldValue = '';
 
       // Add input event listeners
       // * input for modern browsers
       // * propertychange for IE 7 & 8
       // * keyup for IE >= 9: catches keyboard-triggered undos/cuts/deletes
       // * change for IE >= 9: catches mouse-triggered undos/cuts/deletions (when textarea loses focus)
-      this.$textarea.on('input propertychange keyup change', function () {
-        _this._mirror();
+      _this.$textarea.on('input propertychange keyup change', function (e) {
+        var value = _this.$textarea.val();
+        if (value !== _this.oldValue) {
+          _this.oldValue = value;
+          _this._mirror(value);
+          _this.onchange(e)
+        }
       });
 
       // jQuery val() strips carriage return chars by default (see http://api.jquery.com/val/)
@@ -42,22 +50,22 @@
       };
 
       // Mirror contents once on init
-      this._mirror();
+      _this.$textarea.trigger('change');
     }
 
     // Mirror pre/span & textarea contents
-    ,_mirror: function () {
-      this.$span.text(this.$textarea.val());
+    ,_mirror: function (value) {
+      this.$span.text(value);
     }
   };
 
   // jQuery plugin wrapper
-  $.fn.flexText = function () {
+  $.fn.flexText = function (onchangeFn) {
     return this.each(function () {
       // Check if already instantiated on this elem
       if (!$.data(this, 'flexText')) {
         // Instantiate & store elem + string
-        $.data(this, 'flexText', new FT(this));
+        $.data(this, 'flexText', new FT(this, onchangeFn));
       }
     });
   };

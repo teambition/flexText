@@ -7,7 +7,8 @@ bower install tb.flexText
 
 ## User
 ```
-$('textarea').flexText()
+// onchange is a option function, It will be trigger while textarea's value changed
+$('textarea').flexText(onchange)
 ```
 
 ## License
