@@ -1,5 +1,5 @@
 {
-  "name": "tb.flexText",
+  "name": "@teambition/flexText",
   "version": "0.0.3",
   "description": "Auto-height textarea enhanced by Teambition from jQuery flexText",
   "main": "tb.flexText.js",
